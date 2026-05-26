@@ -16,27 +16,40 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&family=Noto+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
-<body>
+<body class="gate-open">
+
+  <!-- Entrance Animation -->
   <div class="letter-gate" id="letterGate">
     <div class="gate-bg"></div>
+    <div class="gate-light"></div>
 
     <div class="envelope-scene">
-      <div class="envelope" id="envelope">
+      <div class="envelope">
         <div class="env-back"></div>
-        <div class="env-paper">
-          <p class="paper-seal">KINGDOM 3584</p>
-          <h1>セインプ王国への招待状</h1>
-          <p>Choose your language to enter the court.</p>
 
-          <div class="language-buttons">
-            <button type="button" class="lang-choice" data-lang="ja">日本語で読む</button>
-            <button type="button" class="lang-choice" data-lang="en">Read in English</button>
+        <div class="env-paper">
+          <p class="paper-label">KINGDOM 3584</p>
+          <h1>セインプ王国への招待状</h1>
+          <p class="paper-text">
+            封書を開き、目的の項目を選択してください。
+          </p>
+
+          <div class="paper-menu">
+            <button type="button" data-action="enter">王国情報</button>
+            <button type="button" data-action="later">KVK戦績</button>
+            <button type="button" data-action="later">野蛮人の要塞</button>
+            <a href="https://discord.gg/QA2q6GEq8" target="_blank" rel="noopener noreferrer">移民</a>
           </div>
+
+          <p class="paper-note">
+            ※ KVK戦績・野蛮人の要塞は後日実装予定です。
+          </p>
         </div>
+
         <div class="env-front"></div>
         <div class="env-flap"></div>
         <div class="wax-seal">3584</div>
@@ -44,6 +57,7 @@
     </div>
   </div>
 
+  <!-- Existing Light-up Loader -->
   <div class="loader" id="loader">
     <div class="flame"></div>
     <p>Lighting the Kingdom...</p>
@@ -59,13 +73,12 @@
     </button>
 
     <nav class="nav" id="nav">
-      <a href="#about" data-ja="概要" data-en="About">概要</a>
-      <a href="#management" data-ja="王国運営" data-en="Management">王国運営</a>
-      <a href="#alliances" data-ja="同盟" data-en="Alliances">同盟</a>
-      <a href="#season" data-ja="日々" data-en="Daily Life">日々</a>
-      <a href="#kvk" data-ja="KvK" data-en="KvK">KvK</a>
+      <a href="#about">概要</a>
+      <a href="#management">王国運営</a>
+      <a href="#alliances">同盟</a>
+      <a href="#season">王国での日々</a>
+      <a href="#kvk">KvK</a>
       <a class="nav-apply" href="https://discord.gg/QA2q6GEq8" target="_blank" rel="noopener noreferrer">Discord</a>
-      <button type="button" class="language-switch" id="languageSwitch">EN</button>
     </nav>
   </header>
 
@@ -84,34 +97,26 @@
 
       <div class="hero-content">
         <p class="eyebrow reveal">RISE OF KINGDOMS</p>
+        <h1 class="hero-title reveal">王国3584</h1>
+        <p class="hero-subtitle reveal">セインプ王国</p>
 
-        <h1 class="hero-title reveal">
-          <span data-ja="王国3584" data-en="KINGDOM 3584">王国3584</span>
-        </h1>
-
-        <p class="hero-subtitle reveal">
-          <span data-ja="セインプ王国" data-en="Saint Empire Kingdom">セインプ王国</span>
-        </p>
-
-        <p class="hero-lead reveal"
-           data-ja="日本人主体＋International。経験豊富な指導者，結束した同盟，精鋭の戦士たち，そしてKvKのあらゆる時代を超えて戦い続ける意志によって築かれた寿司の王国。"
-           data-en="Japanese-led + International. A sushi kingdom built by experienced leaders, united alliances, elite warriors, and the will to fight through every age of KvK.">
-          日本人主体＋International。経験豊富な指導者，結束した同盟，精鋭の戦士たち，そしてKvKのあらゆる時代を超えて戦い続ける意志によって築かれた寿司の王国。
+        <p class="hero-lead reveal">
+          日本人主体＋International。経験豊富な指導者、結束した同盟、精鋭の戦士たち、
+          そしてKvKのあらゆる時代を超えて戦い続ける意志によって築かれた寿司の王国。
         </p>
 
         <div class="badges reveal">
           <span>KvK1 win</span>
           <span>KvK3 win</span>
           <span>KvK4 star</span>
-          <span data-ja="優れた戦士にふさわしい王国" data-en="A kingdom worthy of excellent warriors">優れた戦士にふさわしい王国</span>
+          <span>優れた戦士にふさわしい王国</span>
         </div>
 
         <div class="actions reveal">
-          <a class="button primary" href="https://discord.gg/QA2q6GEq8" target="_blank" rel="noopener noreferrer"
-             data-ja="3584 セインプ王国に応募" data-en="Apply to Kingdom 3584">
+          <a class="button primary" href="https://discord.gg/QA2q6GEq8" target="_blank" rel="noopener noreferrer">
             3584 セインプ王国に応募
           </a>
-          <a class="button ghost" href="#about" data-ja="王国を見る" data-en="Explore Kingdom">王国を見る</a>
+          <a class="button ghost" href="#about">王国を見る</a>
         </div>
       </div>
     </section>
@@ -119,20 +124,21 @@
     <section class="section about" id="about">
       <div class="container grid-2">
         <div class="section-title reveal">
-          <p class="eyebrow" data-ja="王国の概要" data-en="Kingdom Overview">王国の概要</p>
-          <h2 data-ja="王国3584 - セインプ" data-en="Kingdom 3584 - Saint Empire">王国3584 - セインプ</h2>
-          <p data-ja="王国3584は，ライズ・オブ・キングダムズにおける国際王国です。規律，貢献，リーダーシップ，そしてKvKにおける戦果を重んじるアクティブなプレイヤーのための場所です。"
-             data-en="Kingdom 3584 is an international kingdom in Rise of Kingdoms. It is a place for active players who value discipline, contribution, leadership, and results in KvK.">
-            王国3584は，ライズ・オブ・キングダムズにおける国際王国です。規律，貢献，リーダーシップ，そしてKvKにおける戦果を重んじるアクティブなプレイヤーのための場所です。
+          <p class="eyebrow">王国の概要</p>
+          <h2>王国3584 - セインプ</h2>
+          <p>
+            王国3584は、ライズ・オブ・キングダムズにおける国際王国です。
+            規律、貢献、リーダーシップ、そしてKvKにおける戦果を重んじる
+            アクティブなプレイヤーのための場所です。
           </p>
         </div>
 
         <div class="glass reveal">
-          <h3 data-ja="3584の特徴" data-en="Features of 3584">3584の特徴</h3>
+          <h3>3584の特徴</h3>
           <ul>
-            <li data-ja="🌍 日本人を主に，世界中の戦士を歓迎する国際王国" data-en="🌍 A Japanese-led international kingdom welcoming warriors from around the world">🌍 日本人を主に，世界中の戦士を歓迎する国際王国</li>
-            <li data-ja="⭐ かつての3401メンバーが主となったKvK4でスターを獲得" data-en="⭐ Earned a star in KvK4, led mainly by former 3401 members">⭐ かつての3401メンバーが主となったKvK4でスターを獲得</li>
-            <li data-ja="⚔ KvKではノルマが設定され，優秀な戦士のみが王国に残ることができます" data-en="⚔ KvK quotas are set, and only excellent warriors can remain in the kingdom">⚔ KvKではノルマが設定され，優秀な戦士のみが王国に残ることができます</li>
+            <li>🌍 日本人を主に、世界中の戦士を歓迎する国際王国</li>
+            <li>⭐ かつての3401メンバーが主となったKvK4でスターを獲得</li>
+            <li>⚔ KvKではノルマが設定され、優秀な戦士のみが王国に残ることができます</li>
           </ul>
         </div>
       </div>
@@ -141,36 +147,36 @@
     <section class="section" id="management">
       <div class="container">
         <div class="section-title center reveal">
-          <p class="eyebrow" data-ja="王国運営" data-en="Kingdom Management">王国運営</p>
-          <h2 data-ja="経験豊富なリーダーシップによる運営" data-en="Led by Experienced Leadership">経験豊富なリーダーシップによる運営</h2>
-          <p data-ja="3584王国は，経験豊富なリーダーによって運営されており，オフシーズンの準備，移住，そしてKvK戦争を通して王国を導いています。"
-             data-en="Kingdom 3584 is led by experienced leaders who guide preparation, immigration, and KvK warfare.">
-            3584王国は，経験豊富なリーダーによって運営されており，オフシーズンの準備，移住，そしてKvK戦争を通して王国を導いています。
+          <p class="eyebrow">王国運営</p>
+          <h2>経験豊富なリーダーシップによる運営</h2>
+          <p>
+            3584王国は、経験豊富なリーダーによって運営されており、
+            オフシーズンの準備、移住、そしてKvK戦争を通して王国を導いています。
           </p>
         </div>
 
         <div class="cards">
           <article class="card reveal">
             <span>♛</span>
-            <h3 data-ja="国王" data-en="King">国王</h3>
+            <h3>国王</h3>
             <p>Asaha / Shibainu</p>
           </article>
 
           <article class="card reveal">
             <span>✦</span>
-            <h3 data-ja="軍師" data-en="Strategist">軍師</h3>
+            <h3>軍師</h3>
             <p>nou</p>
           </article>
 
           <article class="card reveal">
             <span>⇄</span>
-            <h3 data-ja="移民" data-en="Immigration">移民</h3>
+            <h3>移民</h3>
             <p>Shino</p>
           </article>
 
           <article class="card reveal council">
             <span>⚜</span>
-            <h3 data-ja="王国評議会" data-en="Kingdom Council">王国評議会</h3>
+            <h3>王国評議会</h3>
             <p>Fate / Sagi / ntyaa / いろくん / 鬼ゴリ / HINA</p>
           </article>
         </div>
@@ -182,20 +188,20 @@
         <div class="photo reveal"></div>
 
         <div class="section-title reveal">
-          <p class="eyebrow" data-ja="同盟" data-en="Alliances">同盟</p>
-          <h2 data-ja="主要同盟とサブ同盟" data-en="Main and Sub Alliance">主要同盟とサブ同盟</h2>
-          <p data-ja="王国3584は，主要同盟とサブ同盟を中心に組織されています。これらの同盟は，成長，準備，連携，そして戦争を支えています。"
-             data-en="Kingdom 3584 is organized around its main and sub alliances. These alliances support growth, preparation, coordination, and war.">
-            王国3584は，主要同盟とサブ同盟を中心に組織されています。これらの同盟は，成長，準備，連携，そして戦争を支えています。
+          <p class="eyebrow">同盟</p>
+          <h2>主要同盟とサブ同盟</h2>
+          <p>
+            王国3584は、主要同盟とサブ同盟を中心に組織されています。
+            これらの同盟は、成長、準備、連携、そして戦争を支えています。
           </p>
 
           <div class="alliance-box">
-            <small data-ja="主要同盟" data-en="Main Alliance">主要同盟</small>
+            <small>主要同盟</small>
             <strong>[EoS] Empire of Sushi</strong>
           </div>
 
           <div class="alliance-box">
-            <small data-ja="サブ同盟" data-en="Sub Alliance">サブ同盟</small>
+            <small>サブ同盟</small>
             <strong>[:RS!] Rise of Sushi</strong>
           </div>
         </div>
@@ -205,11 +211,11 @@
     <section class="section season" id="season">
       <div class="container">
         <div class="section-title center reveal">
-          <p class="eyebrow" data-ja="王国での日々" data-en="Daily Life in the Kingdom">王国での日々</p>
-          <h2 data-ja="準備が戦果を生みます。" data-en="Preparation creates victory.">準備が戦果を生みます。</h2>
-          <p data-ja="王国3584は，オフシーズンとKvKの両方において，日々の活動，準備，そして積極的な参加を重視しています。"
-             data-en="Kingdom 3584 values daily activity, preparation, and active participation in both off-season and KvK.">
-            王国3584は，オフシーズンとKvKの両方において，日々の活動，準備，そして積極的な参加を重視しています。
+          <p class="eyebrow">王国での日々</p>
+          <h2>準備が戦果を生みます。</h2>
+          <p>
+            王国3584は、オフシーズンとKvKの両方において、
+            日々の活動、準備、そして積極的な参加を重視しています。
           </p>
         </div>
 
@@ -217,10 +223,10 @@
           <article class="timeline-item reveal">
             <b>01</b>
             <div>
-              <h3 data-ja="砦破壊とクリスタルチェスト" data-en="Forts and Crystal Chests">砦破壊とクリスタルチェスト</h3>
-              <p data-ja="多くのプレイヤーが積極的に野蛮人の砦の破壊に取り組んでおり，レアギフトも豊富で，平均して1日に2〜3個のクリスタルチェストを獲得できます。"
-                 data-en="Many players actively destroy barbarian forts. Rare gifts are abundant, and players can earn around 2 to 3 crystal chests per day on average.">
-                多くのプレイヤーが積極的に野蛮人の砦の破壊に取り組んでおり，レアギフトも豊富で，平均して1日に2〜3個のクリスタルチェストを獲得できます。
+              <h3>野蛮人の砦とクリスタルチェスト</h3>
+              <p>
+                多くのプレイヤーが積極的に野蛮人の砦の破壊に取り組んでおり、
+                レアギフトも豊富で、平均して1日に2〜3個のクリスタルチェストを獲得できます。
               </p>
             </div>
           </article>
@@ -228,10 +234,10 @@
           <article class="timeline-item reveal">
             <b>02</b>
             <div>
-              <h3 data-ja="ブルーアと王国バフ" data-en="Blue A and Kingdom Buffs">ブルーアと王国バフ</h3>
-              <p data-ja="R4がブルーアをリードします。王国のバフは基本的に毎日活用され，主に徴税，順風満帆，または戦争動員が使用されます。"
-                 data-en="R4 leads Blue A. Kingdom buffs are generally used daily, mainly Tax, Favorable Winds, or War Mobilization.">
-                R4がブルーアをリードします。王国のバフは基本的に毎日活用され，主に徴税，順風満帆，または戦争動員が使用されます。
+              <h3>ブルーアと王国バフ</h3>
+              <p>
+                R4がブルーアをリードします。王国のバフは基本的に毎日活用され、
+                主に徴税、順風満帆、または戦争動員が使用されます。
               </p>
             </div>
           </article>
@@ -239,10 +245,10 @@
           <article class="timeline-item reveal">
             <b>03</b>
             <div>
-              <h3 data-ja="イベント運営" data-en="Event Leadership">イベント運営</h3>
-              <p data-ja="RL/GLやDKP順に基づく適切に修正されたMGE，AoO，同盟総動員，シルクロード，暗黒軍団などを適切にリードします。"
-                 data-en="The kingdom properly leads adjusted MGE based on RL/GL and DKP order, AoO, Alliance Mobilization, Silk Road, and Shadow Legion.">
-                RL/GLやDKP順に基づく適切に修正されたMGE，AoO，同盟総動員，シルクロード，暗黒軍団などを適切にリードします。
+              <h3>イベント運営</h3>
+              <p>
+                RL/GLやDKP順に基づく適切に修正されたMGE、AoO、
+                同盟総動員、シルクロード、暗黒軍団などを適切にリードします。
               </p>
             </div>
           </article>
@@ -254,10 +260,10 @@
       <div class="container grid-2">
         <div class="section-title reveal">
           <p class="eyebrow">KvK</p>
-          <h2 data-ja="次の時代はあなたと共に…" data-en="The next age begins with you...">次の時代はあなたと共に…</h2>
-          <p data-ja="KvKにはメインアライアンスのメンバーが参加します。今後のKvKでは，親交がある王国と積極的にチームを組むことを検討しています。"
-             data-en="Main alliance members participate in KvK. In future KvKs, we are considering actively teaming up with kingdoms that have friendly relations with us.">
-            KvKにはメインアライアンスのメンバーが参加します。今後のKvKでは，親交がある王国と積極的にチームを組むことを検討しています。
+          <h2>次の時代はあなたと共に…</h2>
+          <p>
+            KvKにはメインアライアンスのメンバーが参加します。
+            今後のKvKでは、親交がある王国と積極的にチームを組むことを検討しています。
           </p>
         </div>
 
@@ -271,14 +277,14 @@
 
     <section class="section apply" id="apply">
       <div class="container apply-card reveal">
-        <p class="eyebrow" data-ja="3584 セインプ王国に応募" data-en="Apply to Kingdom 3584">3584 セインプ王国に応募</p>
-        <h2 data-ja="キングダム3584に参加しよう。" data-en="Join Kingdom 3584.">キングダム3584に参加しよう。</h2>
-        <p data-ja="王国3584は，栄光ある王国で戦い，成長し，プレイしたいと願う優秀なプレイヤーを求めています。優れたプレイヤーで，栄光ある王国でプレイしたい方は，下のボタンから応募してください。Discordアカウントが必要です。応募は審査制です。"
-           data-en="Kingdom 3584 is looking for excellent players who want to fight, grow, and play in a glorious kingdom. If you are an excellent player and want to play in a glorious kingdom, apply using the button below. A Discord account is required. Applications are reviewed.">
-          王国3584は，栄光ある王国で戦い，成長し，プレイしたいと願う優秀なプレイヤーを求めています。優れたプレイヤーで，栄光ある王国でプレイしたい方は，下のボタンから応募してください。Discordアカウントが必要です。応募は審査制です。
+        <p class="eyebrow">3584 セインプ王国に応募</p>
+        <h2>キングダム3584に参加しよう。</h2>
+        <p>
+          王国3584は、栄光ある王国で戦い、成長し、プレイしたいと願う
+          優秀なプレイヤーを求めています。Discordアカウントが必要です。
+          応募は審査制です。
         </p>
-        <a class="button primary large" href="https://discord.gg/QA2q6GEq8" target="_blank" rel="noopener noreferrer"
-           data-ja="Discordで応募する" data-en="Apply on Discord">
+        <a class="button primary large" href="https://discord.gg/QA2q6GEq8" target="_blank" rel="noopener noreferrer">
           Discordで応募する
         </a>
       </div>
@@ -287,11 +293,12 @@
 
   <footer class="footer">
     <p>© <span id="year"></span> KINGDOM 3584 - Saint Empire</p>
-    <p data-ja="ファンメイドのウェブサイトです。このサイトはRise of KingdomsまたはLilith Gamesとは一切関係がなく，承認も受けていません。"
-       data-en="This is a fan-made website. This site is not affiliated with or endorsed by Rise of Kingdoms or Lilith Games.">
-      ファンメイドのウェブサイトです。このサイトはRise of KingdomsまたはLilith Gamesとは一切関係がなく，承認も受けていません。
+    <p>
+      ファンメイドのウェブサイトです。このサイトはRise of KingdomsまたはLilith Gamesとは一切関係がなく、承認も受けていません。
     </p>
   </footer>
+
+  <div class="toast" id="toast">この項目は後日実装予定です。</div>
 
   <script src="assets/js/main.js"></script>
 </body>
