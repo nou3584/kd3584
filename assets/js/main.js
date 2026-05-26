@@ -3,55 +3,49 @@ const header = document.getElementById("header");
 const navButton = document.getElementById("navButton");
 const nav = document.getElementById("nav");
 const gate = document.getElementById("letterGate");
-const languageSwitch = document.getElementById("languageSwitch");
-
-let currentLang = localStorage.getItem("kd3584_lang") || "ja";
-
-document.body.classList.add("gate-open");
+const toast = document.getElementById("toast");
 
 window.addEventListener("load", () => {
   setTimeout(() => {
     loader?.classList.add("hide");
   }, 450);
-
-  applyLanguage(currentLang);
 });
 
-document.querySelectorAll(".lang-choice").forEach((button) => {
-  button.addEventListener("click", () => {
-    const selectedLang = button.dataset.lang || "ja";
-    currentLang = selectedLang;
-    localStorage.setItem("kd3584_lang", selectedLang);
-    applyLanguage(selectedLang);
+document.querySelectorAll("[data-action]").forEach((item) => {
+  item.addEventListener("click", () => {
+    const action = item.dataset.action;
 
-    gate?.classList.add("hide");
-    document.body.classList.remove("gate-open");
+    if (action === "enter") {
+      closeGate();
+      setTimeout(() => {
+        document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+      }, 900);
+    }
 
-    setTimeout(() => {
-      gate?.remove();
-    }, 900);
-  });
-});
-
-languageSwitch?.addEventListener("click", () => {
-  currentLang = currentLang === "ja" ? "en" : "ja";
-  localStorage.setItem("kd3584_lang", currentLang);
-  applyLanguage(currentLang);
-});
-
-function applyLanguage(lang) {
-  document.documentElement.lang = lang === "ja" ? "ja" : "en";
-
-  document.querySelectorAll("[data-ja][data-en]").forEach((element) => {
-    const text = element.dataset[lang];
-    if (text) {
-      element.textContent = text;
+    if (action === "later") {
+      showToast("この項目は後日実装予定です。");
     }
   });
+});
 
-  if (languageSwitch) {
-    languageSwitch.textContent = lang === "ja" ? "EN" : "JP";
-  }
+function closeGate() {
+  gate?.classList.add("hide");
+  document.body.classList.remove("gate-open");
+
+  setTimeout(() => {
+    gate?.remove();
+  }, 950);
+}
+
+function showToast(message) {
+  if (!toast) return;
+
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
 }
 
 window.addEventListener("scroll", () => {
