@@ -16,10 +16,9 @@ document.querySelectorAll("[data-action]").forEach((item) => {
     const action = item.dataset.action;
 
     if (action === "enter") {
-      closeGate();
-      setTimeout(() => {
-        document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
-      }, 900);
+      const url = item.dataset.url || "kingdom.html";
+      moveLetterToLight(url);
+      return;
     }
 
     if (action === "later") {
@@ -28,13 +27,21 @@ document.querySelectorAll("[data-action]").forEach((item) => {
   });
 });
 
-function closeGate() {
-  gate?.classList.add("hide");
-  document.body.classList.remove("gate-open");
+function moveLetterToLight(url) {
+  if (!gate) {
+    window.location.href = url;
+    return;
+  }
+
+  gate.classList.add("to-light");
 
   setTimeout(() => {
-    gate?.remove();
-  }, 950);
+    gate.classList.add("hide");
+  }, 900);
+
+  setTimeout(() => {
+    window.location.href = url;
+  }, 1180);
 }
 
 function showToast(message) {
@@ -68,23 +75,28 @@ nav?.querySelectorAll("a").forEach((link) => {
 
 const revealItems = document.querySelectorAll(".reveal");
 
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("show");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.16
-  }
-);
+if (revealItems.length > 0) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.16
+    }
+  );
 
-revealItems.forEach((item, index) => {
-  item.style.transitionDelay = `${Math.min(index * 50, 250)}ms`;
-  observer.observe(item);
-});
+  revealItems.forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index * 50, 250)}ms`;
+    observer.observe(item);
+  });
+}
 
-document.getElementById("year").textContent = new Date().getFullYear();
+const year = document.getElementById("year");
+if (year) {
+  year.textContent = new Date().getFullYear();
+}
