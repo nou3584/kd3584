@@ -2,12 +2,57 @@ const loader = document.getElementById("loader");
 const header = document.getElementById("header");
 const navButton = document.getElementById("navButton");
 const nav = document.getElementById("nav");
+const gate = document.getElementById("letterGate");
+const languageSwitch = document.getElementById("languageSwitch");
+
+let currentLang = localStorage.getItem("kd3584_lang") || "ja";
+
+document.body.classList.add("gate-open");
 
 window.addEventListener("load", () => {
   setTimeout(() => {
     loader?.classList.add("hide");
   }, 450);
+
+  applyLanguage(currentLang);
 });
+
+document.querySelectorAll(".lang-choice").forEach((button) => {
+  button.addEventListener("click", () => {
+    const selectedLang = button.dataset.lang || "ja";
+    currentLang = selectedLang;
+    localStorage.setItem("kd3584_lang", selectedLang);
+    applyLanguage(selectedLang);
+
+    gate?.classList.add("hide");
+    document.body.classList.remove("gate-open");
+
+    setTimeout(() => {
+      gate?.remove();
+    }, 900);
+  });
+});
+
+languageSwitch?.addEventListener("click", () => {
+  currentLang = currentLang === "ja" ? "en" : "ja";
+  localStorage.setItem("kd3584_lang", currentLang);
+  applyLanguage(currentLang);
+});
+
+function applyLanguage(lang) {
+  document.documentElement.lang = lang === "ja" ? "ja" : "en";
+
+  document.querySelectorAll("[data-ja][data-en]").forEach((element) => {
+    const text = element.dataset[lang];
+    if (text) {
+      element.textContent = text;
+    }
+  });
+
+  if (languageSwitch) {
+    languageSwitch.textContent = lang === "ja" ? "EN" : "JP";
+  }
+}
 
 window.addEventListener("scroll", () => {
   header?.classList.toggle("scrolled", window.scrollY > 40);
